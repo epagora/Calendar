@@ -2,45 +2,46 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class Calendar
-{
-	public static void main(String[] args) throws IOException
-	{
-		System.out.print("ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚’é–²è¦§ã—ãŸã„å¹´ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ï¼š");
+public class Calendar{
+	public static void main(String[] args) throws IOException{
+		System.out.print("ƒJƒŒƒ“ƒ_[‚ğ‰{——‚µ‚½‚¢”N‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢BF");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int year = Integer.parseInt(br.readLine());
 
-		System.out.println("\n\n" + year + "å¹´\n\n");
+		System.out.println("\n\n" + year + "”N\n\n");
 
 		int y = year-1;
-		int day = 1;
-		int dw = (36+y%100+y%100/4+y/100*5+y/400)%7;
+		int day = 1; //‰½“ú‚©‚ğ•\‚·•Ï”
+		int dw = (36+y%100+y%100/4+y/100*5+y/400)%7; //ƒcƒFƒ‰[‚ÌŒö®‚Å“ü—Í‚³‚ê‚½”N‚Ì1Œ1“ú‚Ì—j“ú‚ğ‹‚ß‚é
 
+		//ƒJƒŒƒ“ƒ_[•\¦i12‚©Œ•ªŒJ‚è•Ô‚·j
 		for(int i=1; i<=12; i++) {
-			System.out.println(i + "æœˆ");
-			System.out.println("æ—¥\tæœˆ\tç«\tæ°´\tæœ¨\té‡‘\tåœŸ");
+			System.out.println(i + "Œ"); //‰½Œ‚©‚ğ•\¦
+			System.out.println("“ú\tŒ\t‰Î\t…\t–Ø\t‹à\t“y"); //—j“ú‚ğ•\¦
 
-			for(int l=0; l<dw; l++) {
+			//1“ú‚Ì—j“ú‚Ü‚Åƒ^ƒu‚ğ“ü‚ê‚é
+			for(int j=0; j<dw; j++) {
 				System.out.print("\t");
 			}
 
-			for(int j=0; j<6; j++) {
-				if(j==0) {
+			//6T•ªŒJ‚è•Ô‚·
+			for(int k=0; k<6; k++) {
+				if(k==0) { //1T–Ú‚ÍæŒ‚ÌÅI“ú‚ÌŸ‚Ì—j“ú‚©‚çƒXƒ^[ƒg
 					for(; dw<7; dw++) {
 						System.out.print(day + "\t");
 						day++;
 					}
-				}else {
+				}else { //2T–ÚˆÈ~‚Í“ú—j‚©‚çƒXƒ^[ƒg
 					for(dw=0; dw<7; dw++) {
 						System.out.print(day + "\t");
 
 						if((i==2 && !(year%400==0 || (year%100!=0 && year%4==0)) && day==28) || (i==2 && day==29) ||
-								((i==4 || i==6 || i==9 || i==11) && day==30) || day==31) {
-							day = 1;
-							j = 6;
+								((i==4 || i==6 || i==9 || i==11) && day==30) || day==31) { //Œ‚ÌÅI“ú‚È‚ç
+							day = 1; //1“ú‚É‚·‚é
+							k = 6; //‹­§“I‚É6T–Ú‚É‚µ‚Äƒ‹[ƒv‚©‚ç”²‚¯‚é
 							dw++;
-							if(dw==7) dw = 0;
+							if(dw==7) dw = 0; //Ÿ‚ÌŒ‚Ì1T–Ú‚Í‰Šú‰»‚³‚ê‚È‚¢‚Ì‚ÅA“y—j“ú‚ÅI‚í‚Á‚½ê‡‚Í‰Šú‰»
 							break;
 						}
 
@@ -48,10 +49,10 @@ class Calendar
 					}
 				}
 
-				System.out.println();
+				System.out.println(); //‰üs
 			}
 
-			System.out.println("\n");
+			System.out.println("\n"); //2s‰üs
 		}
 	}
 }
